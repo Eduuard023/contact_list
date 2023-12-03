@@ -1,24 +1,25 @@
-import logo from './logo.svg'
-import './App.css'
+// src/App.tsx
+import React from 'react'
+import { Provider } from 'react-redux'
+import { store } from './store'
+import AddContact from './components/addContact'
+import ContactList from './components/ContactList'
+import EditContact from './components/editContact'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <div>
+        <AddContact />
+        <ContactList />
+        <EditContact
+          contactId={0}
+          onClose={function (): void {
+            throw new Error('Function not implemented.')
+          }}
+        />
+      </div>
+    </Provider>
   )
 }
 
